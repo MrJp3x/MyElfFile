@@ -1,0 +1,69 @@
+#! /usr/bin/python3
+"""
+Created at 04/04/2021  1:00 AM
+
+os.geteuid() : if access is root return 0 else return any number (on linux debian based)
+tryConnect(): if system is connected to internet return True else return False
+
+"""
+
+import urllib.request
+import os
+import platform
+
+
+def tryConnect(host='https://google.com'):
+    try:
+        urllib.request.urlopen(host)
+        return True
+    except:
+        return False
+
+
+if tryConnect() and (os.geteuid() == 0):
+    if platform.system() == 'Linux':
+        try:
+            os.system('apt update')
+            os.system('apt upgrade')
+            os.system('apt install vim')
+            os.system('apt install net-tools')
+            os.system('apt install vlc')
+            os.system('apt install simplescreenrecorder')
+            os.system('apt install virtualenv')
+            os.system('apt install python3-tk')
+            os.system('snap install pycharm-community')
+            os.system('snap install spotify')
+            os.system('snap install sublime-text')
+            os.system('snap install notepadqq')
+            # os.system('apt install python3-tk')
+
+            # { install Python3.7 on Ubuntu20.04
+            os.system('add-apt-repository ppa:deadsnakes/ppa')
+            os.system('apt-get update')
+            os.system('apt-get install python3.7')
+            # }
+
+            # { install Python3.10 on Ubuntu20.04
+            os.system("apt install software-properties-common -y")
+            # os.system("add-apt-repository ppa:deadsnakes/ppa")
+            os.system("apt install python3.10")
+            # }
+
+            os.system('pip3 install pyqt5')
+            os.system('pip3 install requests')
+            os.system('pip3 install pyfiglet')
+            os.system('pip3 install termcolor2')
+            os.system('pip3 install pygame')
+            os.system('pip3 install gpiozero')  # this library for check cpu temperature
+            os.system('pip3 install pyinstaller')
+            # {
+            # os.system('pip3 install tkinter') # sudo apt install python3-tk # don't use it on this application because
+            # i don't now how use sudo with os.system()
+            # }
+
+        except:
+            pass
+
+else:
+    print('Please Check your connections and is your access rooted?')
+
